@@ -41,6 +41,12 @@ export default function Home() {
     }
   }
 
+  // Sort todos: incomplete first, completed at the bottom
+  const sortedTodos = [...todos].sort((a, b) => {
+    if (a.completed === b.completed) return 0
+    return a.completed ? 1 : -1
+  })
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-2xl mx-auto">
@@ -72,7 +78,7 @@ export default function Home() {
             </div>
           ) : (
             <ul className="space-y-3">
-              {todos.map((todo) => (
+              {sortedTodos.map((todo) => (
                 <li
                   key={todo.id}
                   className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
