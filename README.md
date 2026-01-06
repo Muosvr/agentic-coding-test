@@ -32,6 +32,28 @@ npm run dev
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
+## Testing
+
+This app includes comprehensive browser automation tests using Playwright.
+
+### Run Tests
+
+```bash
+# Install browsers first (one time)
+npx playwright install chromium
+
+# Run tests
+npm test
+
+# Run tests with visible browser
+npm run test:headed
+
+# Run tests in interactive UI mode
+npm run test:ui
+```
+
+See [TESTING.md](TESTING.md) for detailed testing documentation.
+
 ## Deployment to Vercel
 
 ### Option 1: Deploy via Vercel CLI
@@ -64,19 +86,24 @@ vercel
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
+- **Testing:** Playwright (Browser Automation)
 - **Deployment:** Vercel
 
 ## Project Structure
 
 ```
 ├── app/
-│   ├── layout.tsx      # Root layout
-│   ├── page.tsx        # Main todo list page
-│   └── globals.css     # Global styles
+│   ├── layout.tsx           # Root layout
+│   ├── page.tsx             # Main todo list page
+│   └── globals.css          # Global styles
+├── tests/
+│   └── todo.spec.ts         # Playwright test suite
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
-└── next.config.js
+├── playwright.config.ts     # Playwright configuration
+├── next.config.js
+└── TESTING.md               # Testing documentation
 ```
 
 ## License
